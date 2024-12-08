@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  elt:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/elt
+    command: python elt_pipeline.py
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://${USER}:${PASSWORD}@db:5432/${DBNAME}
+  
+  db:
+    image: postgres:13
+
+    environment:
+      POSTGRES_USER: ${USER}       
+      POSTGRES_PASSWORD: ${PASSWORD} 
+      POSTGRES_DB: ${DBNAME}
+
+    volumes:
+      -  db_data:/var/lib/postgresql/data
+    
+    ports:
+      - "5432:5432"
+
+
+volumes:
+    db_data:

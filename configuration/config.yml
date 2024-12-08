@@ -1,0 +1,52 @@
+EXTRACT_PARAMS:
+  URL: https://www.gumtree.com/
+  N_P: 2
+  CATEGORY:
+    - flats-houses
+    - business-services
+    - pets
+  DATA:
+    title: []
+    localisation: []
+    price: []
+    type_annonce: []
+    ad_id: []
+    description: []
+    url_annonce: []
+  XPATHS:
+    annonce: //a[@class='css-220ynt e25keea16']
+    data_annonce:
+      - //h1[@class='css-4rz76v e1pt9h6u2']
+      - //h4[@class='css-1h37vil e1pt9h6u1']
+      - //h3[@class='css-sik94l e1pt9h6u0']
+      - /html/body/div[2]/div[1]/div/main/div[1]/div[1]/div[2]/ol/li[2]/a
+      - //div[@class='css-y9foeu ew0ql602']//b
+      - //p[@class='css-3snkdc ew0ql600']
+  CITIES:
+    - London
+    - Manchester
+    - Birmingham
+    - Liverpool
+    - Leeds
+    - Bristol
+    - Sheffield
+    - Glasgow
+    - Edinburgh
+    - Cardiff
+  UNITS: metric
+  WEATHER_URL: https://api.openweathermap.org/data/2.5/weather?
+  DATA_WEATHER:
+    city: []
+    temp: []
+    humidity: []
+    description: []
+    wind_speed: []
+    sunset_time: []
+
+TRANSFORM_PARAMS:
+  PATH_WHEATHER: C:\\Users\\Youcode\\ETL_project\\data\\extraction_wheather.csv
+  PATH_WEB: C:\\Users\\Youcode\\ETL_project\\data\\extraction.csv
+
+LOAD_PARAMS:
+  PATH_WHEATHER: C:\\Users\\Youcode\\ETL_project\\data\\transform_wheiter.csv
+  PATH_WEB: C:\\Users\\Youcode\\ETL_project\\data\\transform_web.csv
